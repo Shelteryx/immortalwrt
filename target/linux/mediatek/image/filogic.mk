@@ -3541,6 +3541,21 @@ define Device/nokia_ea0326gmp
 endef
 TARGET_DEVICES += nokia_ea0326gmp
 
+define Device/nradio_n3000
+  DEVICE_VENDOR := NRadio
+  DEVICE_MODEL := N3000
+  DEVICE_DTS := mt7981b-nradio-wt9138
+  DEVICE_DTS_DIR := ../dts
+  SUPPORTED_DEVICES := NRadio-N3000-emmc nradio,n3000
+  DEVICE_PACKAGES := \
+    kmod-usb3 kmod-usb-net-rndis kmod-usb-net-cdc-ether \
+    kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware \
+    kmod-phy-maxlinear automount
+  IMAGE_SIZE := 262144k
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata | check-size
+endef
+TARGET_DEVICES += nradio_n3000
+
 define Device/nradio_c8-668gl
   DEVICE_VENDOR := NRadio
   DEVICE_MODEL := C8-668GL
